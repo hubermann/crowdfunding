@@ -10,6 +10,33 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <h5 class="my-0 mr-md-auto font-weight-normal">CoolCrowdFunding</h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="<%= projects_path %>">Projects</a>
+        <a class="p-2 text-dark" href="#">Enterprise</a>
+        <a class="p-2 text-dark" href="#">Support</a>
+        <a class="p-2 text-dark" href="#">Pricing</a>
+      </nav>
+      <p>
+        <small>
+          <% if current_user %>
+            Logged in as <%= current_user.email %>.
+            <%= link_to "Log Out", logout_path, class: "btn btn-outline-primary" %>
+          <% else %>
+            <%= link_to "Sign Up", signup_path, class: "btn btn-outline-primary"%> or
+            <%= link_to "Log In", login_path , class: "btn btn-outline-primary" %>
+          <% end %>
+        </small>
+      </p>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

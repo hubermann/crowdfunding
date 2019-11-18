@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  get 'projects/index'
-  get 'projects/create'
-  get 'projects/edit'
-  get 'projects/update'
-  get 'projects/delete'
+
+  root :to => 'projects#index'
+  
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  resources :projects, :users, :sessions
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
